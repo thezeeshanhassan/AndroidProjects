@@ -57,8 +57,7 @@
                 android:textSize="20dp">
             </TextView>
             <EditText
-                android:layout_below="@+id/emailInput"
-                android:id="@+id/email"
+                android:id="@+id/emailInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
@@ -91,6 +90,7 @@
                 android:padding="10dp">
             </EditText>
             <Button
+                android:id="@+id/forgotPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
@@ -99,6 +99,7 @@
                 android:layout_gravity="end">
             </Button>
             <Button
+                android:id="@+id/logIn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

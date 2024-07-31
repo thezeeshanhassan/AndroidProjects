@@ -81,18 +81,25 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        Toast.makeText(this, email + username
-                + password + cpassword, Toast.LENGTH_SHORT).show();
-
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(SignUpActivity.this,
-                        LogInActivity.class);
-                i.putExtra("val1", email);
-                i.putExtra("val2", password);
-                startActivity(i);
 
+                email = emailInput.getText().toString();
+                password = passwordInput.getText().toString();
+
+
+                if(email.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(SignUpActivity.this,
+                            "You Must Signup to go To Login Page",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent i = new Intent(SignUpActivity.this,
+                            LogInActivity.class);
+                    i.putExtra("email", emailInput.getText().toString());
+                    i.putExtra("password", passwordInput.getText().toString());
+                    startActivity(i);
+                }
             }
         });
     }
