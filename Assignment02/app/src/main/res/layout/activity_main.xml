@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Assignment 02"
+            android:textSize="100px"
+            android:gravity="center"
+            android:layout_marginBottom="100px"
+            android:textColor="@android:color/holo_blue_light">
+        </TextView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="100px"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@android:color/black"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:textSize="100px"
+            android:gravity="center"
+            android:textColor="#7460A8"
+            android:layout_marginBottom="100px">
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="50px">
+            <Button
+                android:id="@+id/q1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Question No 1"
+                app:cornerRadius="5dp"
+                android:elevation="30dp"
+                android:stateListAnimator="@null"
+                android:layout_margin="5dp"
+                android:textSize="50px"
+                android:backgroundTint="@android:color/holo_blue_light">
+            </Button>
+            <Button
+                android:id="@+id/q2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Question No 2"
+                app:cornerRadius="5dp"
+                android:elevation="30dp"
+                android:stateListAnimator="@null"
+                android:layout_margin="5dp"
+                android:textSize="50px"
+                android:backgroundTint="@android:color/holo_blue_light">
+
+            </Button>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/q3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Question No 3"
+                app:cornerRadius="5dp"
+                android:elevation="30dp"
+                android:stateListAnimator="@null"
+                android:layout_margin="5dp"
+                android:textSize="50px"
+                android:backgroundTint="@android:color/holo_blue_light">
+            </Button>
+            <Button
+                android:id="@+id/q4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Question No 4"
+                app:cornerRadius="5dp"
+                android:elevation="30dp"
+                android:stateListAnimator="@null"
+                android:layout_margin="5dp"
+                android:textSize="50px"
+                android:backgroundTint="@android:color/holo_blue_light">
+
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

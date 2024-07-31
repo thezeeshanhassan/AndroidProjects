@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity2">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:gravity="center">
+        <TextView
+            android:layout_alignParentTop="true"
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Relative Layout"
+            android:textSize="100px"
+            android:gravity="center"
+            android:layout_marginBottom="100px"
+            android:layout_marginTop="50dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relativeLayout"
+            android:layout_centerHorizontal="true"
+            android:text="TextView"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="50px"
+            android:layout_marginLeft="50dp"
+            android:background="#7460A8"
+            android:textColor="#FFFFFF">
+        </TextView>
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView1"
+            android:layout_marginTop="16dp"
+            android:text="EditText"
+            android:padding="10dp"
+            android:gravity="center"
+            android:background="#7460A8"
+            android:textColor="#FFFFFF" />
+
+        <CheckBox
+            android:id="@+id/checkBox1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editText1"
+            android:layout_marginTop="16dp"
+            android:text="CheckBox"
+            android:padding="10dp"
+            android:textSize="40px"
+            android:textColor="@color/white"
+            android:background="#7460A8"/>
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/checkBox1"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_launcher_foreground"
+            android:padding="8dp"
+            android:layout_marginRight="15dp"
+            android:background="#7460A8" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageView1"
+            android:layout_marginTop="16dp"
+            android:text="Go to Home"
+            android:layout_marginRight="20dp"
+            app:cornerRadius="5dp"
+            android:elevation="10dp"
+            android:stateListAnimator="@null"
+            android:backgroundTint="@android:color/holo_blue_light">
+        </Button>
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/editText1"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"
+            android:background="#7460A8">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_gravity="center"
+                android:textSize="50px"
+                android:background="@color/white"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"/>
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CheckBox"
+                android:layout_marginTop="8dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textSize="50px"
+                android:layout_gravity="center"
+                android:background="@color/white">
+            </CheckBox>
+
+            <RatingBar
+                android:id="@+id/ratingBar1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:numStars="4"
+                android:stepSize="1.0">
+            </RatingBar>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
