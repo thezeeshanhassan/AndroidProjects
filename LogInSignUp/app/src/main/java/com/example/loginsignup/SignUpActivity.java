@@ -3,6 +3,7 @@ package com.example.loginsignup;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -45,39 +46,7 @@ public class SignUpActivity extends AppCompatActivity {
                 password = passwordInput.getText().toString();
                 cpassword = cpasswordInput.getText().toString();
 
-
-                if (email.isEmpty() || username.isEmpty() || password.isEmpty() ||
-                        cpassword.isEmpty()) {
-                    Toast.makeText(SignUpActivity.this,
-                            "All fields are mandatory",
-                            Toast.LENGTH_SHORT).show();
-                } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).
-                        matches()) {
-                    Toast.makeText(SignUpActivity.this,
-                            "Please enter a valid email address",
-                            Toast.LENGTH_SHORT).show();
-                } else if (!password.matches(".*[A-Z]") ) {
-                    Toast.makeText(SignUpActivity.this,
-                            "Password must contain at least one capital letter" ,
-                            Toast.LENGTH_SHORT).show();
-                } else if(password.length() < 8) {
-                    Toast.makeText(SignUpActivity.this,
-                            "Password must have 8 Characters" ,
-                            Toast.LENGTH_SHORT).show();
-                } else if (!(password.equals(cpassword))) {
-                    Toast.makeText(SignUpActivity.this,
-                            "Passwords do not match",
-                            Toast.LENGTH_SHORT).show();
-                } else if(!checkboxTerms.isChecked()) {
-                    Toast.makeText(SignUpActivity.this,
-                            "Please Check the Check Box to Continue",
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(SignUpActivity.this,
-                            "Successfully Sign Up. \n" +
-                                    "Plese Go to the Login Page to LogIn",
-                            Toast.LENGTH_SHORT).show();
-                }
+                validateInputs();
             }
         });
 
@@ -102,5 +71,59 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+
+    private void validateInputs() {
+        String email = emailInput.getText().toString().trim();
+        String username = usernameInput.getText().toString().trim();
+        String password = passwordInput.getText().toString().trim();
+        String cpassword = cpasswordInput.getText().toString().trim();
+
+        boolean isValid = true;
+
+        if (email.isEmpty()) {
+            emailInput.setError("Email is required");
+            isValid = false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            emailInput.setError("Please enter a valid email");
+            isValid = false;
+        }
+
+        if (username.isEmpty()) {
+            usernameInput.setError("Username is required");
+            isValid = false;
+        }
+
+        if (password.isEmpty()) {
+            passwordInput.setError("Password is required");
+            isValid = false;
+        } else if (!password.matches(".*[A-Z].*")) {
+            passwordInput.setError("Password must contain at least one capital letter");
+            isValid = false;
+        } else if (password.length() < 8) {
+            passwordInput.setError("Password must have at least 8 characters");
+            isValid = false;
+        }
+
+        if (cpassword.isEmpty()) {
+            cpasswordInput.setError("Confirm Password is required");
+            isValid = false;
+        } else if (!password.equals(cpassword)) {
+            cpasswordInput.setError("Passwords do not match");
+            isValid = false;
+        }
+
+        if (!checkboxTerms.isChecked()) {
+            checkboxTerms.setError("Please accept the terms and conditions");
+            isValid = false;
+        } else {
+            checkboxTerms.setError(null); // Clear the error
+        }
+
+        if (isValid) {
+            Toast.makeText(SignUpActivity.this, "Successfully Signed Up.\nPlease go to the Login Page to log in", Toast.LENGTH_SHORT).show();
+            // Proceed with the sign-up process
+        }
     }
 }

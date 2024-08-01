@@ -30,46 +30,73 @@ public class LogInActivity extends AppCompatActivity {
         forgotPassword = findViewById(R.id.forgotPassword);
 
 
-
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent i = getIntent();
-                email = i.getStringExtra("email");
-                password = i.getStringExtra("password");
-
-
-                lemail = emailInput.getText().toString();
-                lpassword = passwordInput.getText().toString();
-
-                if(email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(LogInActivity.this,
-                            "Please First Create Account",
-                            Toast.LENGTH_SHORT).show();
-                }
-                else if (!email.equals(lemail) || !password.equals(lpassword)) {
-                    Toast.makeText(LogInActivity.this,
-                            "Email or Password is Incorrect",
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(LogInActivity.this,
-                            "LogIn Successfully",
-                            Toast.LENGTH_SHORT).show();
-                    // Start the next activity
-//                    Intent nextIntent = new Intent(LogInActivity.this,
-//                    NextActivity.class);  // Replace NextActivity with your target activity
-//                    startActivity(nextIntent);
-                }
+                validateInputs();
             }
         });
 
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                handleForgotPassword();
             }
         });
 
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(LogInActivity.this,
+                        SignUpActivity.class);
+                startActivity(i);
+            }
+        });
+
+    }
+
+    private void validateInputs() {
+        Intent i = getIntent();
+        email = i.getStringExtra("email");
+        password = i.getStringExtra("password");
+
+        lemail = emailInput.getText().toString();
+        lpassword = passwordInput.getText().toString();
+
+        if (email == null && password == null) {
+            Toast.makeText(LogInActivity.this,
+                    "Please First Create Account", Toast.LENGTH_SHORT).show();
+            return;
+        } if (lemail.isEmpty()) {
+            emailInput.setError("Email is Required");
+        } if (lpassword.isEmpty()) {
+            passwordInput.setError("Password is Required");
+        } else if (!email.equals(lemail) ) {
+            emailInput.setError("Entered Email is Wrong");
+        } else if (!password.equals(lpassword)) {
+            passwordInput.setError("Entered Password is Wrong");
+        } else {
+            Toast.makeText(LogInActivity.this,
+                    "LogIn Successfully", Toast.LENGTH_SHORT).show();
+            // Start the next activity
+            // Intent nextIntent = new Intent(LogInActivity.this, NextActivity.class);  // Replace NextActivity with your target activity
+            // startActivity(nextIntent);
+        }
+    }
+
+    private void handleForgotPassword() {
+        Intent i = getIntent();
+        email = i.getStringExtra("email");
+        password = i.getStringExtra("password");
+
+        if (email == null && password == null) {
+            Toast.makeText(LogInActivity.this,
+                    "You Don't have an Account\nPlease Create Account First",
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intent = new Intent(LogInActivity.this,
+                    ForgetpasswordActivity.class);
+            startActivity(intent);
+        }
     }
 }
