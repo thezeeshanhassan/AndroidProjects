@@ -96,6 +96,7 @@ public class LogInActivity extends AppCompatActivity {
         } else {
             Intent intent = new Intent(LogInActivity.this,
                     ForgetpasswordActivity.class);
+            intent.putExtra("email", emailInput.getText().toString());
             startActivity(intent);
         }
     }
