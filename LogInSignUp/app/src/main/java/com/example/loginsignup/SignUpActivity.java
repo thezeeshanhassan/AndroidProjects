@@ -66,7 +66,6 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-
     private void validateInputs() {
         String email = emailInput.getText().toString().trim();
         String username = usernameInput.getText().toString().trim();

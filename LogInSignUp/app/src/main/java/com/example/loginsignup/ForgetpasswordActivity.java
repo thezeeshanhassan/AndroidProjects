@@ -77,6 +77,7 @@ public class ForgetpasswordActivity extends AppCompatActivity {
             }
         });
 
+
     }
     boolean validateInputs() {
 
