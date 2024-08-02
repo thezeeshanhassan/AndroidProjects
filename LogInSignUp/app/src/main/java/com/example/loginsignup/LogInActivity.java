@@ -78,26 +78,16 @@ public class LogInActivity extends AppCompatActivity {
         } else {
             Toast.makeText(LogInActivity.this,
                     "LogIn Successfully", Toast.LENGTH_SHORT).show();
-            // Start the next activity
-            // Intent nextIntent = new Intent(LogInActivity.this, NextActivity.class);  // Replace NextActivity with your target activity
-            // startActivity(nextIntent);
         }
     }
 
     private void handleForgotPassword() {
-        Intent i = getIntent();
-        email = i.getStringExtra("email");
-        password = i.getStringExtra("password");
-
-        if (email == null && password == null) {
-            Toast.makeText(LogInActivity.this,
-                    "You Don't have an Account\nPlease Create Account First",
-                    Toast.LENGTH_SHORT).show();
-        } else {
-            Intent intent = new Intent(LogInActivity.this,
+            Intent intent = getIntent();
+            email = intent.getStringExtra("email");
+            intent = new Intent(LogInActivity.this,
                     ForgetpasswordActivity.class);
-            intent.putExtra("email", emailInput.getText().toString());
+        Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
+            intent.putExtra("email", email);
             startActivity(intent);
-        }
     }
 }

@@ -57,18 +57,11 @@ public class SignUpActivity extends AppCompatActivity {
                 email = emailInput.getText().toString();
                 password = passwordInput.getText().toString();
 
-
-                if(email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(SignUpActivity.this,
-                            "You Must Signup to go To Login Page",
-                            Toast.LENGTH_SHORT).show();
-                } else {
                     Intent i = new Intent(SignUpActivity.this,
                             LogInActivity.class);
                     i.putExtra("email", emailInput.getText().toString());
                     i.putExtra("password", passwordInput.getText().toString());
                     startActivity(i);
-                }
             }
         });
     }
