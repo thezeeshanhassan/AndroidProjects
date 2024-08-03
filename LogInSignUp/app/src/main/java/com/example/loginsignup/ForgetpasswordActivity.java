@@ -71,8 +71,6 @@ public class ForgetpasswordActivity extends AppCompatActivity {
                         LogInActivity.class);
                 i.putExtra("email",femail);
                 i.putExtra("password", fPassword);
-                Toast.makeText(ForgetpasswordActivity.this, fPassword,
-                        Toast.LENGTH_SHORT).show();
                 startActivity(i);
             }
         });

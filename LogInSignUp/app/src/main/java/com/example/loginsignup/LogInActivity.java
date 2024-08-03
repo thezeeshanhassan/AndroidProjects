@@ -81,12 +81,17 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     private void handleForgotPassword() {
-            Intent intent = getIntent();
-            email = intent.getStringExtra("email");
-            intent = new Intent(LogInActivity.this,
-                    ForgetpasswordActivity.class);
-        Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
-            intent.putExtra("email", email);
-            startActivity(intent);
+        Intent intent = getIntent();
+        String email = intent.getStringExtra("email");
+
+        if (email != null) {
+            Intent i = new Intent(LogInActivity.this, ForgetpasswordActivity.class);
+            i.putExtra("email", email);
+            startActivity(i);
+        } else {
+            Intent i = new Intent(LogInActivity.this, ForgetpasswordActivity.class);
+            i.putExtra("email", "");
+            startActivity(i);
+        }
     }
 }
