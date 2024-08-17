@@ -21,6 +21,10 @@ public class SignUpActivity extends AppCompatActivity {
     String email, username, password, cpassword;
     EditText emailInput, usernameInput, passwordInput, cpasswordInput;
     CheckBox checkboxTerms;
+
+    DatabaseHandler db = new DatabaseHandler(this);
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +51,14 @@ public class SignUpActivity extends AppCompatActivity {
                 cpassword = cpasswordInput.getText().toString();
 
                 validateInputs();
+
+                User user = new User(username, email, password);
+                try {
+                    db.insertUser(user);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+
             }
         });
 
@@ -54,13 +66,8 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                email = emailInput.getText().toString();
-                password = passwordInput.getText().toString();
-
                     Intent i = new Intent(SignUpActivity.this,
                             LogInActivity.class);
-                    i.putExtra("email", emailInput.getText().toString());
-                    i.putExtra("password", passwordInput.getText().toString());
                     startActivity(i);
             }
         });

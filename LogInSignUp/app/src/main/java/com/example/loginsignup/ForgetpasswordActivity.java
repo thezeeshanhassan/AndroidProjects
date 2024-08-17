@@ -31,89 +31,116 @@ public class ForgetpasswordActivity extends AppCompatActivity {
         changePassword = findViewById(R.id.changePassword);
         logIn = findViewById(R.id.logIn);
 
+        DatabaseHandler db = new DatabaseHandler(this);
+
         changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = getIntent();
-                email = i.getStringExtra("email");
+                // Get the input values
+                String fPassword = passwordInput.getText().toString();
+                String fcPassword = cPasswordInput.getText().toString();
+                String femail = emailInput.getText().toString();
 
-                fPassword = passwordInput.getText().toString();
-                fcPassword = cPasswordInput.getText().toString();
-                femail = emailInput.getText().toString();
+                // Validate inputs before proceeding
+                if (validateInputs(fPassword, fcPassword, femail)) {
+                    // Fetch user details from the database
+                    User user = db.getUserDetails(femail);
 
-                if (validateInputs()) {
-                    if (email == null || email.isEmpty()) {
+                    if (user == null) {
+                        // No user found with the provided email
                         Toast.makeText(ForgetpasswordActivity.this,
-                                "You Don't have Account \n" +
-                                        "Please Create Account First",
+                                "You don't have an account. \n" +
+                                        "Please create an account first.",
                                 Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    else if(email.equals(femail)) {
-                        Toast.makeText(ForgetpasswordActivity.this,
-                                "Successfully Changed Password.\n" +
-                                        "Please go to the Login Page to log in",
-                                Toast.LENGTH_SHORT).show();
-                        }
-                } else if(!email.equals(femail)){
-                    emailInput.setError("Email is Entered Wrond");
-                }
 
+                    // Check if the new password and confirm password match
+                    if (fPassword.equals(fcPassword)) {
+                        // Update the password in the database
+                        user.setPassword(fPassword);
+                        db.updateUserPassword(user);
+
+                        Toast.makeText(ForgetpasswordActivity.this,
+                                "Password successfully changed.\n" +
+                                        "Please go to the Login Page to log in.",
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        // Passwords don't match
+                        cPasswordInput.setError("Passwords do not match.");
+                    }
+                }
             }
         });
+
+
+
+
 
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                femail = emailInput.getText().toString();
-                fPassword = passwordInput.getText().toString();
+//                femail = emailInput.getText().toString();
+//                fPassword = passwordInput.getText().toString();
                 Intent i = new Intent(ForgetpasswordActivity.this,
                         LogInActivity.class);
-                i.putExtra("email",femail);
-                i.putExtra("password", fPassword);
+//                i.putExtra("email",femail);
+//                i.putExtra("password", fPassword);
                 startActivity(i);
             }
         });
 
 
     }
-    boolean validateInputs() {
 
-        isValid = true;
-
-        fPassword = passwordInput.getText().toString();
-        fcPassword = cPasswordInput.getText().toString();
-        femail = emailInput.getText().toString();
-
-        if (femail.isEmpty()) {
-            emailInput.setError("Email is Required");
-            isValid = false;
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(femail).matches()) {
-            emailInput.setError("Enter a valid email");
-            isValid = false;
+    private boolean validateInputs(String password, String confirmPassword, String email) {
+        if (password.isEmpty() || confirmPassword.isEmpty() || email.isEmpty()) {
+            Toast.makeText(this, "Please fill all fields.", Toast.LENGTH_SHORT).show();
+            return false;
         }
-
-        // Password validation
-        if (fPassword.isEmpty()) {
-            passwordInput.setError("Password is required");
-            isValid = false;
-        } else if (!fPassword.matches(".*[A-Z].*")) {
-            passwordInput.setError("Password must contain at least one capital letter");
-            isValid = false;
-        } else if (fPassword.length() < 8) {
-            passwordInput.setError("Password must have at least 8 characters");
-            isValid = false;
+        if (!password.equals(confirmPassword)) {
+            Toast.makeText(this, "Passwords do not match.", Toast.LENGTH_SHORT).show();
+            return false;
         }
-
-        // Confirm Password validation
-        if (fcPassword.isEmpty()) {
-            cPasswordInput.setError("Confirm Password is required");
-            isValid = false;
-        } else if (!fPassword.equals(fcPassword)) {
-            cPasswordInput.setError("Passwords do not match");
-            isValid = false;
-        }
-
-        return isValid;
+        return true;
     }
+//    boolean validateInputs() {
+//
+//        isValid = true;
+//
+//        fPassword = passwordInput.getText().toString();
+//        fcPassword = cPasswordInput.getText().toString();
+//        femail = emailInput.getText().toString();
+//
+//        if (femail.isEmpty()) {
+//            emailInput.setError("Email is Required");
+//            isValid = false;
+//        } else if (!Patterns.EMAIL_ADDRESS.matcher(femail).matches()) {
+//            emailInput.setError("Enter a valid email");
+//            isValid = false;
+//        }
+//
+//        // Password validation
+//        if (fPassword.isEmpty()) {
+//            passwordInput.setError("Password is required");
+//            isValid = false;
+//        } else if (!fPassword.matches(".*[A-Z].*")) {
+//            passwordInput.setError("Password must contain at least one capital letter");
+//            isValid = false;
+//        } else if (fPassword.length() < 8) {
+//            passwordInput.setError("Password must have at least 8 characters");
+//            isValid = false;
+//        }
+//
+//        // Confirm Password validation
+//        if (fcPassword.isEmpty()) {
+//            cPasswordInput.setError("Confirm Password is required");
+//            isValid = false;
+//        } else if (!fPassword.equals(fcPassword)) {
+//            cPasswordInput.setError("Passwords do not match");
+//            isValid = false;
+//        }
+//
+//        return isValid;
+//    }
 }

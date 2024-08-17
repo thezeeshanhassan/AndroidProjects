@@ -17,6 +17,12 @@ public class LogInActivity extends AppCompatActivity {
     Button signUp, logIn, forgotPassword;
     EditText emailInput, passwordInput;
     String email, password, lemail, lpassword;
+
+
+    DatabaseHandler db = new DatabaseHandler(this);
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,43 +61,45 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     private void validateInputs() {
-        Intent i = getIntent();
-        email = i.getStringExtra("email");
-        password = i.getStringExtra("password");
+        // Get the entered email and password from the input fields
+        lemail = emailInput.getText().toString().trim();
+        lpassword = passwordInput.getText().toString().trim();
 
-        lemail = emailInput.getText().toString();
-        lpassword = passwordInput.getText().toString();
-
-        if (email == null && password == null) {
-            Toast.makeText(LogInActivity.this,
-                    "Please First Create Account", Toast.LENGTH_SHORT).show();
-            return;
-        } if (lemail.isEmpty()) {
+        // Check if the input fields are empty
+        if (lemail.isEmpty()) {
             emailInput.setError("Email is Required");
-        } if (lpassword.isEmpty()) {
+            return;
+        }
+        if (lpassword.isEmpty()) {
             passwordInput.setError("Password is Required");
-        } else if (!email.equals(lemail) ) {
-            emailInput.setError("Entered Email is Wrong");
-        } else if (!password.equals(lpassword)) {
+            return;
+        }
+
+        // Get the user details from the database based on the entered email
+        User user = db.getUserDetails(lemail);
+
+        // Check if the email exists in the database
+        if (user == null) {
+            emailInput.setError("No account found with this email");
+            Toast.makeText(LogInActivity.this,
+                    "Please Create an Account", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Check if the password matches the one in the database
+        if (!user.getPassword().equals(lpassword)) {
             passwordInput.setError("Entered Password is Wrong");
         } else {
             Toast.makeText(LogInActivity.this,
                     "LogIn Successfully", Toast.LENGTH_SHORT).show();
+            // Proceed with the login process, such as navigating to the next activity
         }
     }
 
-    private void handleForgotPassword() {
-        Intent intent = getIntent();
-        String email = intent.getStringExtra("email");
 
-        if (email != null) {
-            Intent i = new Intent(LogInActivity.this, ForgetpasswordActivity.class);
-            i.putExtra("email", email);
-            startActivity(i);
-        } else {
-            Intent i = new Intent(LogInActivity.this, ForgetpasswordActivity.class);
-            i.putExtra("email", "");
-            startActivity(i);
-        }
+    private void handleForgotPassword() {
+        Intent i = new Intent(LogInActivity.this, ForgetpasswordActivity.class);
+        startActivity(i);
+
     }
 }
