@@ -3,12 +3,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Messages">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        android:background="@color/black">
+        <LinearLayout
+            android:id="@+id/header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:background="@color/black">
+
+            <!-- Profile Image in Header -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/profileImage1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:cardCornerRadius="20dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/username"
+                android:elevation="4dp">
+
+                <ImageView
+                    android:id="@+id/profileImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_profile_placeholder"
+                    android:scaleType="centerCrop"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Notification Text -->
+            <TextView
+                android:id="@+id/header_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Inbox"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:layout_marginStart="8dp" />
+
+            <!-- Settings Icon -->
+            <!-- Pushes the icon to the right end -->
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welcome to Your Inbox"
+                android:textColor="@color/white"
+                android:textSize="50dp"
+                android:textStyle="bold"
+                android:layout_margin="10dp">
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Drop a line here to your Friends, Family Members. Be responsible Family Member OR Friend. Drop a line here to your Friends, Family Members. Be responsible Family Member OR Friend."
+                android:textColor="@color/white"
+                android:layout_margin="10dp"
+                android:textSize="20dp">
+            </TextView>
+            <Button
+                android:id="@+id/writeMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Write a Message"
+                android:layout_gravity="start"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:backgroundTint="@color/white"
+                android:layout_margin="10dp">
+            </Button>
+
+        </LinearLayout>
+    </LinearLayout>
+
 
 </FrameLayout>

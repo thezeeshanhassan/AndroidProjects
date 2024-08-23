@@ -26,27 +26,27 @@ public class Notification extends Fragment {
 
         notificationList = new ArrayList<>();
         // Add some dummy data
-        notificationList.add(new NotificationItem("New Message from Ahmad",
-                "5m ago", "You have a new message from Ahmad Hassan Bobak." +
+        notificationList.add(new NotificationItem("Ahmad has posted a Vido",
+                "5m ago", "Click to see the Ahmad's Post" +
                 " Check it out now!"));
-        notificationList.add(new NotificationItem("New Message from Hamza",
-                "1d ago", "You have a new message from Ahmad Hamza Mehmood ." +
+        notificationList.add(new NotificationItem("Hamza Started Folllowing You",
+                "1d ago", "" +
+                " Follow back to Hamza"));
+        notificationList.add(new NotificationItem("Barshan Hassan started Following You",
+                "5d ago", " " +
+                " Follow back to Barshan"));
+        notificationList.add(new NotificationItem("Alia has postd her Job",
+                "10d ago", "Explore more about Alia." +
                 " Check it out now!"));
+        notificationList.add(new NotificationItem("Hamza Started Folllowing",
+                "1d ago", "" +
+                " Follow back to Hamza"));
         notificationList.add(new NotificationItem("New Message from Barshan",
                 "5d ago", "You have a new message from Barshan Hassan." +
                 " Check it out now!"));
-        notificationList.add(new NotificationItem("New Message from Alia",
-                "10d ago", "You have a new message from Alia Barshan." +
-                " Check it out now!"));
-        notificationList.add(new NotificationItem("New Message from Hamza",
-                "1d ago", "You have a new message from Ahmad Hamza Mehmood ." +
-                " Check it out now!"));
-        notificationList.add(new NotificationItem("New Message from Barshan",
-                "5d ago", "You have a new message from Barshan Hassan." +
-                " Check it out now!"));
-        notificationList.add(new NotificationItem("New Message from Ahmad",
-                "5m ago", "You have a new message from Ahmad Hassan Bobak." +
-                " Check it out now!"));
+        notificationList.add(new NotificationItem("Barshan Hassan started Following You",
+                "5d ago", " " +
+                " Follow back to Barshan"));
 
         adapter = new NotificationAdapter(notificationList);
         recyclerView.setAdapter(adapter);
