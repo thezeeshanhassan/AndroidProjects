@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/newsTab"
+        android:icon="@drawable/ic_newsfeed"
+        android:title="NewsFeed" />
+    <item
+        android:id="@+id/aboutTab"
+        android:icon="@drawable/ic_notifications"
+        android:title="Notifi" />
+    <item
+        android:id="@+id/messagesTab"
+        android:icon="@drawable/ic_messages"
+        android:title="Chat" />
+    <item
+        android:id="@+id/profileTab"
+        android:icon="@drawable/ic_profile"
+        android:title="Profile" />
+</menu>

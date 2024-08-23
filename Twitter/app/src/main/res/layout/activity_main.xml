@@ -7,56 +7,47 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-
-    <LinearLayout
+    <!-- FrameLayout for displaying fragments -->
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tabLayout" />
+
+    <!-- TabLayout at the bottom of the screen -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/newsTab"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="50dp">
-            <com.google.android.material.tabs.TabLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/tabLayout">
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/homeTab"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Home">
-                </com.google.android.material.tabs.TabItem>
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/aboutTab"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="About">
-                </com.google.android.material.tabs.TabItem>
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/servicesTab"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Services">
-                </com.google.android.material.tabs.TabItem>
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/profileTab"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Profile">
-                </com.google.android.material.tabs.TabItem>
-            </com.google.android.material.tabs.TabLayout>
+            android:icon="@drawable/ic_newsfeed" />
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/frameLayout">
-            </FrameLayout>
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/aboutTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_notifications" />
 
-        </LinearLayout>
-    </LinearLayout>
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/messagesTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_messages" />
 
-
-
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/profileTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_profile" />
+    </com.google.android.material.tabs.TabLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
