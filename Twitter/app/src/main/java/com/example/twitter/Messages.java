@@ -1,5 +1,6 @@
 package com.example.twitter;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.Button;
  * create an instance of this fragment.
  */
 public class Messages extends Fragment {
+    Button writeMessage;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,7 +62,19 @@ public class Messages extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_messages, container, false);
-    }
+        View view = inflater.inflate(R.layout.fragment_messages, container, false);
 
+        // Find the Button after inflating the view
+        writeMessage = view.findViewById(R.id.writeMessage);
+        writeMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Use getActivity() as the context and pass the Intent correctly
+                Intent i = new Intent(getActivity(), sendMessage.class);
+                startActivity(i);
+            }
+        });
+
+        return view;
+    }
 }
