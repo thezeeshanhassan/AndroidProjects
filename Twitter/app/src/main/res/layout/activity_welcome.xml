@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundimage"
+    tools:context=".WelcomeActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Assignment 03"
+            android:textSize="36dp"
+            android:textStyle="bold"
+            android:textColor="#103D78"
+            android:gravity="center">
+        </TextView>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Make You Job Easy"
+            android:textSize="30dp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:gravity="center">
+        </TextView>
+
+        <Button
+            android:id="@+id/logIn"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Log In"
+            android:backgroundTint="#63ABFF"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="105dp"
+            android:paddingLeft="105dp"
+            android:textSize="20dp"
+            android:layout_gravity="center">
+        </Button>
+
+        <Button
+            android:id="@+id/signUp"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:backgroundTint="#103D78"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="100dp"
+            android:paddingLeft="100dp"
+            android:textSize="20dp"
+            android:layout_gravity="center">
+        </Button>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "332058507779",
+    "project_id": "fir-practice-e595b",
+    "storage_bucket": "fir-practice-e595b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332058507779:android:5e9cc7375cd4ba9740ec36",
+        "android_client_info": {
+          "package_name": "com.example.loginsignup"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeOVCF-SqaBHXxlMxBUa8-dfOIrn6e3KA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
