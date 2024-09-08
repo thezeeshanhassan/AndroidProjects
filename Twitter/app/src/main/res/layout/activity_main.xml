@@ -52,4 +52,17 @@
             android:icon="@drawable/ic_profile" />
     </com.google.android.material.tabs.TabLayout>
 
+    <!-- Button for creating tweet a little above the bottom-right corner -->
+    <Button
+        android:id="@+id/createTweet"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="100dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/black"
+        android:text="Create Tweet"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

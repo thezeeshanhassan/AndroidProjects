@@ -1,4 +1,3 @@
-// TweetAdapter.java
 package com.example.twitter;
 
 import android.view.LayoutInflater;
@@ -14,9 +13,9 @@ import java.util.List;
 
 public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.TweetViewHolder> {
 
-    private List<String> tweets;
+    private List<Tweet> tweets;
 
-    public TweetAdapter(List<String> tweets) {
+    public TweetAdapter(List<Tweet> tweets) {
         this.tweets = tweets;
     }
 
@@ -29,9 +28,13 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.TweetViewHol
 
     @Override
     public void onBindViewHolder(@NonNull TweetViewHolder holder, int position) {
-        String tweet = tweets.get(position);
-        holder.tweetText.setText(tweet);
-        // Set up other views here
+        Tweet tweet = tweets.get(position);
+        holder.tweetText.setText(tweet.getContent());
+        holder.username.setText(tweet.getUsername());
+        holder.postTime.setText(tweet.getPostTime());
+        holder.comment_count.setText(String.valueOf(tweet.getCommentCount()));
+        holder.retweet_count.setText(String.valueOf(tweet.getRetweetCount()));
+        holder.like_count.setText(String.valueOf(tweet.getLikeCount()));
     }
 
     @Override
@@ -40,12 +43,8 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.TweetViewHol
     }
 
     public static class TweetViewHolder extends RecyclerView.ViewHolder {
-        TextView tweetText, username, postTime,
-                comment_count, retweet_count,like_count ;
-        ImageView profileImage,
-                tweetMedia, commentIcon, retweet_icon,
-                like_icon, share_icon ;
-
+        TextView tweetText, username, postTime, comment_count, retweet_count, like_count;
+        ImageView profileImage, tweetMedia, commentIcon, retweet_icon, like_icon, share_icon;
 
         public TweetViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -55,14 +54,11 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.TweetViewHol
             comment_count = itemView.findViewById(R.id.comment_count);
             retweet_count = itemView.findViewById(R.id.retweet_count);
             like_count = itemView.findViewById(R.id.like_count);
-
             like_icon = itemView.findViewById(R.id.like_icon);
             profileImage = itemView.findViewById(R.id.profileImage);
             tweetMedia = itemView.findViewById(R.id.tweetMedia);
             commentIcon = itemView.findViewById(R.id.commentIcon);
             share_icon = itemView.findViewById(R.id.share_icon);
-
-            // Initialize other views here
         }
     }
 }

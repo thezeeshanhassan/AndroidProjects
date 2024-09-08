@@ -1,64 +1,91 @@
 package com.example.twitter;
 
-import android.os.Bundle;
+import com.google.firebase.database.DatabaseReference;
 
-import androidx.fragment.app.Fragment;
+import java.util.UUID;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+public class Tweet {
+    private String uuid;
+    private String content;
+    private String username;
+    private String postTime;
+    private int commentCount;
+    private int retweetCount;
+    private int likeCount;
+    DatabaseReference myRef = null;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Tweet#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class Tweet extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    // Empty constructor for Firestore
     public Tweet() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Tweet.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Tweet newInstance(String param1, String param2) {
-        Tweet fragment = new Tweet();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    // Constructor with parameters
+    public Tweet(String content, String username, String postTime, int commentCount, int retweetCount, int likeCount) {
+        this.uuid = UUID.randomUUID().toString();
+        this.content = content;
+        this.username = username;
+        this.postTime = postTime;
+        this.commentCount = commentCount;
+        this.retweetCount = retweetCount;
+        this.likeCount = likeCount;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    // Getters and Setters
+    public String getContent() {
+        return content;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tweet, container, false);
+    public void setContent(String content) {
+        this.content = content;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPostTime() {
+        return postTime;
+    }
+
+    public void setPostTime(String postTime) {
+        this.postTime = postTime;
+    }
+
+    public int getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
+    }
+
+    public int getRetweetCount() {
+        return retweetCount;
+    }
+
+    public void setRetweetCount(int retweetCount) {
+        this.retweetCount = retweetCount;
+    }
+
+    public int getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(int likeCount) {
+        this.likeCount = likeCount;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+
 }
+
