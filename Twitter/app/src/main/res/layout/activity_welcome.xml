@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Assignment 03"
+            android:text="Final Project"
             android:textSize="36dp"
             android:textStyle="bold"
             android:textColor="#103D78"
@@ -25,7 +25,7 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Make You Job Easy"
+            android:text="Make Your Life Easy"
             android:textSize="30dp"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
