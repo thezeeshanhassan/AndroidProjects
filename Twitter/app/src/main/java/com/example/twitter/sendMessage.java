@@ -27,10 +27,16 @@ public class sendMessage extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(sendMessage.this, "Message Sent Successfully",
-                        Toast.LENGTH_SHORT).show();
-                emailInput.setText("");
-                passwordInput.setText("");
+                emailInput = findViewById(R.id.emailInput);
+                if(emailInput.equals("thezeeshan")) {
+                    emailInput.setError("Username Not Found");
+                }
+                else {
+                    Toast.makeText(sendMessage.this, "Message Sent Successfully",
+                            Toast.LENGTH_SHORT).show();
+                    emailInput.setText("");
+                    passwordInput.setText("");
+                }
             }
         });
 

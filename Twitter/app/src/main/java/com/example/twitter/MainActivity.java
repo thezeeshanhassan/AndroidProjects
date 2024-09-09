@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (!tweetMessage.isEmpty()) {
                     // Create a new Tweet object and push to Firebase
-                    Tweet newTweet = new Tweet(tweetMessage, "currentUsername", "just now", 0, 0, 0); // Adjust accordingly
+                    Tweet newTweet = new Tweet(tweetMessage, "user", "just now", 0, 0, 0); // Adjust accordingly
                     tweetsRef.push().setValue(newTweet);
 
                     Toast.makeText(MainActivity.this, "Tweet added!", Toast.LENGTH_SHORT).show();
